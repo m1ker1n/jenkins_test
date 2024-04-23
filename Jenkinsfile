@@ -1,10 +1,17 @@
 /* Requires the Docker Pipeline plugin */
 pipeline {
-    agent { docker { image 'golang:1.22.2-alpine3.19' } }
+    agent any
+
     stages {
         stage('build') {
             steps {
-                sh 'go version'
+                echo 'Build'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploy'
             }
         }
     }
