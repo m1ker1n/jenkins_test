@@ -11,7 +11,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh "docker run \ 
+                sh "docker run \
                         -d \
                         -e SECRET=zhopa \
                         -p 8080:8080 \
