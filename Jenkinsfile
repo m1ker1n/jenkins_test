@@ -5,13 +5,16 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                echo 'Build'
+                sh "docker build -t 127.0.0.1:5001/go-echo:latest --cache-from 127.0.0.1:5001/go-echo:latest ."
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploy'
+                sh "docker run \
+                        -e SECRET=zhopa \
+                        -p 8080:8080 \
+                        127.0.0.1:5001/go-echo:latest"
             }
         }
     }

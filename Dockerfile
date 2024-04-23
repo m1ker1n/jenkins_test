@@ -12,8 +12,12 @@ RUN go mod download
 # copying source code
 COPY *.go ./
 
-# building application
-RUN go build -o /app
+# building application  
+RUN go build -o /go-echo
+
+# The EXPOSE instruction doesn't actually publish the port
+# It functions as a type of documentation
+EXPOSE 8080
 
 # running application
-CMD ["/app"]
+CMD ["/go-echo"]
