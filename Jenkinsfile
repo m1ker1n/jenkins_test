@@ -11,12 +11,12 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh "$DOCKER_HOST=host.docker.internal \
+                sh '$DOCKER_HOST=host.docker.internal \
                         docker run \
                             -d \
                             -e SECRET=zhopa \
                             -p 8080:8080 \
-                            go-echo:latest"
+                            go-echo:latest'
             }
         }
     }
