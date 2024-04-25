@@ -9,14 +9,13 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('deploy') {
             steps {
-                sh "DOCKER_HOST=host.docker.internal \
-                        docker run \
-                            -d \
-                            -e SECRET=zhopa \
-                            -p 8080:8080 \
-                            go-echo:latest"
+                sh "docker run \
+                        -d \
+                        -e SECRET=zhopa \
+                        -p 8080:8080 \
+                        go-echo:latest"
             }
         }
     }
